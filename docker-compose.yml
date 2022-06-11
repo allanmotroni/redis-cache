@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  api:
+    build:
+      context: .
+    ports:
+      - 8085:80
+    depends_on:
+      - redis
+    container_name: api
+    networks:
+      - my-network
+
+  redis:
+    image: redis/redis-stack:latest
+    ports:
+      - 6379:6379
+      - 8001:8001
+    container_name: redis
+    hostname: localhost
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
