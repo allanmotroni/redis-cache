@@ -49,6 +49,8 @@ namespace WebApiRedisCache
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApiRedisCache v1"));
 
+            app.UseHealthChecks("/healthcheck");
+
             app.UseRouting();
 
             app.UseAuthorization();
